@@ -10,10 +10,10 @@ module.exports = {
     sepolia: {
       url: "https://eth-sepolia.g.alchemy.com/v2/demo", // sepolia RPC endpoint
       chainId: 11155111, // sepolia chain ID
-      accounts: [PRIVATE_KEY],
+      accounts: [""],
     }
   },
   etherscan:{
-    apiKey: ETHERSCAN_API_KEY
+    apiKey: ""
   }
 };
