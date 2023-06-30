@@ -7,9 +7,9 @@ module.exports = {
   solidity: "0.8.9",
   defaultNetwork: "hardhat",
   networks:{
-    sepolia: {
-      url: "https://eth-sepolia.g.alchemy.com/v2/demo", // sepolia RPC endpoint
-      chainId: 11155111, // sepolia chain ID
+    mumbai: {
+      url: "https://rpc-mumbai.maticvigil.com", // sepolia RPC endpoint
+      chainId: 80001, // sepolia chain ID
       accounts: [""],
     }
   },

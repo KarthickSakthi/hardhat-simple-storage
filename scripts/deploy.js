@@ -4,18 +4,23 @@ const hre = require("hardhat");
 const ETHERSCAN_API_KEY = ""
 async function  deploy(){
 
-  const simpleStorageFactory = await hre.ethers.deployContract("SimpleStorage");
-  await simpleStorageFactory.waitForDeployment();
-  console.log("Deploying....");
+  const simpleStorageFactory = await hre.ethers.getContractFactory("SimpleStorage");
+  const simplestorage =  await simpleStorageFactory.deploy();
+  // console.log("simpleStorageFactory",await simpleStorageFactory)
+   await simplestorage.deploymentTransaction().wait(5);
+ 
+  console.log("Deploying....",await simplestorage.getAddress());
   // const simpleStorage = (await simpleStorageFactory.deploy()).waitForDeployment();
-  console.log(`Deployed contract to ${await simpleStorageFactory.getAddress() }`)
+  // console.log(`Deployed contract to ${ simplestorage }`)
 
   // console.log("network config", hre.network.config)
 
-  if(hre.network.config.chainId === 11155111 && ETHERSCAN_API_KEY ){
+  if(hre.network.config.chainId === 80001 && ETHERSCAN_API_KEY ){
     console.log("waiting for confirmation")
-    await simpleStorageFactory.deploymentTransaction().wait(2);
-    await verify(simpleStorageFactory.getAddress(),[])
+    // await simpleStorageFactory.deploymentTransaction(6);
+    // await delay(60000);
+    await simplestorage.waitForDeployment()
+    await verify(await simplestorage.getAddress(),[])
   }
 
   const currentValue = await simpleStorageFactory.retrieve();
