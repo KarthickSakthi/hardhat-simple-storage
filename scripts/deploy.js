@@ -2,6 +2,11 @@ const hre = require("hardhat");
 
 
 const ETHERSCAN_API_KEY = ""
+
+async function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function  deploy(){
 
   const simpleStorageFactory = await hre.ethers.getContractFactory("SimpleStorage");
@@ -19,7 +24,7 @@ async function  deploy(){
     console.log("waiting for confirmation")
     // await simpleStorageFactory.deploymentTransaction(6);
     // await delay(60000);
-    await simplestorage.waitForDeployment()
+    await sleep(30 * 1000);
     await verify(await simplestorage.getAddress(),[])
   }
 
