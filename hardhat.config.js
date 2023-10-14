@@ -3,6 +3,7 @@ require("@nomicfoundation/hardhat-verify")
 require("dotenv").config();
 require("./task/block-number");
 require("hardhat-gas-reporter");
+require("solidity-coverage");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -19,7 +20,7 @@ module.exports = {
     apiKey: ""
   },
   gasReporter:{
-    enabled:true,
+    enabled:false,
     outputFile:"gas-report.txt",
     noColors:true,
     currency:"USD",
