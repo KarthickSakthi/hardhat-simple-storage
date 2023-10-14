@@ -2,6 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require("@nomicfoundation/hardhat-verify")
 require("dotenv").config();
 require("./task/block-number");
+require("hardhat-gas-reporter");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -13,8 +14,16 @@ module.exports = {
       chainId: 80001, // sepolia chain ID
       accounts: [""],
     }
+  },
+  etherscan:{
+    apiKey: ""
+  },
+  gasReporter:{
+    enabled:true,
+    outputFile:"gas-report.txt",
+    noColors:true,
+    currency:"USD",
+    coinmarketcap:"",
+    token:"MATIC"
   }
-  // etherscan:{
-  //   apiKey: ""
-  // }
 };
